@@ -1,0 +1,12 @@
+[package]
+name = "fsutil-ftp"
+version.workspace = true
+edition.workspace = true
+authors.workspace = true
+
+[dependencies]
+log = { workspace = true }
+fsutil-core = { workspace = true }
+suppaftp = "^6"
+rustls-pki-types = { version = "1", optional = true }
+webpki-roots = { version = "0.26", optional = true }
