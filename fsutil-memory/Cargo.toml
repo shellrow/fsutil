@@ -6,3 +6,8 @@ authors.workspace = true
 
 [dependencies]
 fsutil-core = { workspace = true }
+log = "^0.4"
+orange-trees = "0.1"
+
+[dev-dependencies]
+pretty_assertions = "^1"

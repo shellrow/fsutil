@@ -5,3 +5,4 @@ edition.workspace = true
 authors.workspace = true
 
 [dependencies]
+fsutil = { version = "0.0.1", path = "../fsutil" }

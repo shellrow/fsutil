@@ -6,3 +6,25 @@ authors.workspace = true
 
 [dependencies]
 fsutil-core = { workspace = true }
+chrono = "^0.4"
+lazy-regex = "3"
+log = "^0.4"
+ssh2-config = "^0.5"
+ssh2 = "^0.9"
+
+[dev-dependencies]
+env_logger = "^0.11"
+pretty_assertions = "^1"
+rand = "^0.9"
+tempfile = "^3"
+testcontainers = { version = "0.24", features = ["blocking"] }
+
+[features]
+no-log = ["log/max_level_off"]
+ssh2-vendored = ["ssh2/vendored-openssl"]
+# tests
+github-actions = []
+
+[target."cfg(target_os = \"windows\")"]
+[target."cfg(target_os = \"windows\")".dependencies]
+path-slash = "^0.2.1"

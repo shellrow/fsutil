@@ -1,8 +1,0 @@
-[package]
-name = "fsutil-local"
-version.workspace = true
-edition.workspace = true
-authors.workspace = true
-
-[dependencies]
-fsutil-core = { workspace = true }

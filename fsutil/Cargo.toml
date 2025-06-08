@@ -6,3 +6,7 @@ authors.workspace = true
 
 [dependencies]
 fsutil-core = { workspace = true }
+fsutil-ftp = { workspace = true }
+fsutil-memory = { workspace = true }
+fsutil-smb = { workspace = true }
+fsutil-ssh = { workspace = true }

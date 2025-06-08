@@ -1,3 +1,12 @@
-pub fn wip() {
-    println!("This module is a work in progress.");
-}
+// -- crates
+#[macro_use]
+extern crate log;
+
+pub mod client;
+pub use client::FtpFileSystem;
+
+// -- utils
+pub(crate) mod utils;
+// -- mock
+#[cfg(test)]
+pub(crate) mod mock;

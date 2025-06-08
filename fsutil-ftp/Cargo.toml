@@ -10,3 +10,26 @@ fsutil-core = { workspace = true }
 suppaftp = "^6"
 rustls-pki-types = { version = "1", optional = true }
 webpki-roots = { version = "0.26", optional = true }
+
+[dev-dependencies]
+env_logger = "^0.11"
+pretty_assertions = "^1.0.0"
+rand = "^0.8.4"
+serial_test = "^3"
+tempfile = "^3"
+
+[features]
+# TLS
+native-tls = ["suppaftp/native-tls"]
+rustls = ["suppaftp/rustls", "dep:rustls-pki-types", "dep:webpki-roots"]
+secure = ["native-tls"]
+vendored = ["suppaftp/native-tls-vendored"]
+# misc
+no-log = ["log/max_level_off"]
+# tests
+github-actions = []
+with-containers = ["native-tls"]
+
+[target."cfg(target_os = \"windows\")"]
+[target."cfg(target_os = \"windows\")".dependencies]
+path-slash = "^0.1.4"
