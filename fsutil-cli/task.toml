@@ -1,0 +1,16 @@
+[[operations]]
+type = "copy"
+from = "sftp://user@host/dir1"
+to = "smb://host/share/dir2"
+recursive = true
+
+[[operations]]
+type = "move"
+from = "sftp://user@host/dir1"
+to = "smb://host/share/dir2"
+recursive = true
+
+[[operations]]
+type = "delete"
+target = "local:/var/tmp"
+age_hours = 3600

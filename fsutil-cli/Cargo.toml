@@ -11,3 +11,8 @@ path = "src/main.rs"
 [dependencies]
 fsutil = { version = "0.0.1", path = "../fsutil" }
 clap = { version = "4.4", features = ["cargo"] }
+tracing = { workspace = true }
+tracing-subscriber = { workspace = true }
+chrono = "^0.4"
+serde = {  workspace = true, features = ["derive"] }
+toml = { version = "0.8" }
