@@ -6,7 +6,7 @@ authors.workspace = true
 
 [dependencies]
 fsutil-core = { workspace = true }
-log = "^0.4"
+tracing = { workspace = true }
 
 [target."cfg(target_family = \"unix\")"]
 [target."cfg(target_family = \"unix\")".dependencies]
@@ -22,9 +22,9 @@ windows-sys = { version = "^0.59", features = [
 ] }
 
 [dev-dependencies]
-anyhow = "^1"
+anyhow = { workspace = true }
 argh = "^0.1"
-env_logger = "^0.11"
+tracing-subscriber = { workspace = true }
 pretty_assertions = "^1"
 rpassword = "7.2"
 serial_test = "^3"
@@ -32,7 +32,7 @@ tempfile = "^3"
 
 [features]
 # misc
-no-log = ["log/max_level_off"]
+no-log = ["tracing/max_level_off"]
 vendored = ["pavao/vendored"]
 # tests
 with-containers = []

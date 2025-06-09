@@ -1,6 +1,6 @@
 // -- crates
 #[macro_use]
-extern crate log;
+extern crate tracing;
 
 // -- export
 pub use fs::{File, RemoteError, RemoteErrorType, RemoteFileSystem, RemoteResult};

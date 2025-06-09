@@ -1,5 +1,7 @@
 #[macro_use]
-extern crate log;
+extern crate tracing;
+
+use std::path::PathBuf;
 
 use argh::FromArgs;
 use fsutil_core::RemoteFileSystem;
@@ -27,6 +29,8 @@ struct Args {
         description = "specify workgroup"
     )]
     workgroup: String,
+    #[argh(option, short = 'd', description = "specify directory")]
+    dir: PathBuf,
     #[argh(option, short = 's', description = "specify share")]
     share: String,
     #[argh(
@@ -37,8 +41,17 @@ struct Args {
 }
 
 fn main() -> anyhow::Result<()> {
-    assert!(env_logger::builder().try_init().is_ok());
+    let subscriber = tracing_subscriber::FmtSubscriber::builder()
+        // all spans/events with a level higher than TRACE (e.g, debug, info, warn, etc.)
+        // will be written to stdout.
+        .with_max_level(tracing::Level::DEBUG)
+        // completes the builder.
+        .finish();
+    tracing::subscriber::set_global_default(subscriber).expect("setting default subscriber failed");
     let args: Args = argh::from_env();
+
+    let dir = args.dir.clone();
+
     #[cfg(target_family = "unix")]
     let password = match &args.password {
         Some(p) => p.clone(),
@@ -54,9 +67,10 @@ fn main() -> anyhow::Result<()> {
     client.connect()?;
     info!("client connected");
 
-    let wrkdir = client.pwd()?;
-    info!("listing files at {}", wrkdir.display());
-    let files = client.list_dir(&wrkdir)?;
+    info!("current working directory: {:?}", client.pwd()?);
+
+    info!("listing files at {}", dir.display());
+    let files = client.list_dir(&dir)?;
 
     for file in files {
         println!("{}", file.name());

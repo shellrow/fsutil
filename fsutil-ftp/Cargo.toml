@@ -5,14 +5,14 @@ edition.workspace = true
 authors.workspace = true
 
 [dependencies]
-log = { workspace = true }
+tracing = { workspace = true }
 fsutil-core = { workspace = true }
 suppaftp = "^6"
 rustls-pki-types = { version = "1", optional = true }
 webpki-roots = { version = "0.26", optional = true }
 
 [dev-dependencies]
-env_logger = "^0.11"
+tracing-subscriber = { workspace = true }
 pretty_assertions = "^1.0.0"
 rand = "^0.8.4"
 serial_test = "^3"
@@ -25,7 +25,7 @@ rustls = ["suppaftp/rustls", "dep:rustls-pki-types", "dep:webpki-roots"]
 secure = ["native-tls"]
 vendored = ["suppaftp/native-tls-vendored"]
 # misc
-no-log = ["log/max_level_off"]
+no-log = ["tracing/max_level_off"]
 # tests
 github-actions = []
 with-containers = ["native-tls"]

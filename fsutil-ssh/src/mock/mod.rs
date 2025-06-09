@@ -11,10 +11,12 @@ pub fn logger() {
     static INIT: Once = Once::new();
 
     INIT.call_once(|| {
-        let _ = env_logger::builder()
-            .filter_level(log::LevelFilter::Trace)
-            .is_test(true)
-            .format_line_number(true)
-            .try_init();
+        let subscriber = tracing_subscriber::FmtSubscriber::builder()
+            // all spans/events with a level higher than TRACE (e.g, debug, info, warn, etc.)
+            // will be written to stdout.
+            .with_max_level(tracing::Level::DEBUG)
+            // completes the builder.
+            .finish();
+        tracing::subscriber::set_global_default(subscriber).expect("setting default subscriber failed");
     });
 }

@@ -4,5 +4,10 @@ version.workspace = true
 edition.workspace = true
 authors.workspace = true
 
+[[bin]]
+name = "fsutil"
+path = "src/main.rs"
+
 [dependencies]
 fsutil = { version = "0.0.1", path = "../fsutil" }
+clap = { version = "4.4", features = ["cargo"] }

@@ -5,11 +5,11 @@ edition.workspace = true
 authors.workspace = true
 
 [dependencies]
-log = { workspace = true }
+tracing = { workspace = true }
 thiserror = { workspace = true }
 wildmatch = { workspace = true }
 
 [dev-dependencies]
-env_logger = "^0.11"
+tracing-subscriber = { workspace = true }
 pretty_assertions = "^1"
 tempfile = "^3"

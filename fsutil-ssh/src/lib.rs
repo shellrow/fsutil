@@ -2,7 +2,7 @@
 #[macro_use]
 extern crate lazy_regex;
 #[macro_use]
-extern crate log;
+extern crate tracing;
 
 mod ssh;
 pub use ssh::{
